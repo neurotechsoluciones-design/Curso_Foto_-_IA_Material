@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroTech | Arquitecto de Realidad v3.0</title>
+  
+  <!-- Fuentes de NeuroTech -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Iconos -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Librería para generar PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            neuro: {
+              black: '#020202',
+              dark: '#0a0a0a',
+              green: '#9AFF5F',
+              blue: '#2100E5',        
+              'blue-light': '#6344FF', 
+              glass: 'rgba(255, 255, 255, 0.03)',
+              border: 'rgba(255, 255, 255, 0.1)'
+            }
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'text-shimmer': 'text-shimmer 3s linear infinite',
+            'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+            'blink': 'blink 1s step-end infinite',
+          },
+          keyframes: {
+            'text-shimmer': {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' }
+            },
+            'blink': { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0' } },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #020202;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    }
+    
+    .glass-panel {
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .glass-panel:hover {
+      border-color: rgba(154, 255, 95, 0.4);
+      box-shadow: 0 0 40px -5px rgba(154, 255, 95, 0.2);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #2100E5; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #9AFF5F; }
+
+    .animate-text-gradient {
+      background: linear-gradient(to right, #ffffff, #9AFF5F, #2100E5, #ffffff);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: text-shimmer 6s linear infinite;
+    }
+
+    .tab-btn { position: relative; transition: all 0.3s ease; }
+    .tab-btn.active { color: #9AFF5F; background: rgba(154, 255, 95, 0.1); border-color: #9AFF5F; }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #9AFF5F;
+      box-shadow: 0 0 10px #9AFF5F;
+    }
+
+    /* FIX: SELECTOR VISIBILITY */
+    select {
+        background: rgba(20, 20, 20, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #e2e8f0;
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239AFF5F'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+    }
+    
+    /* Forzar fondo oscuro en las opciones para evitar el bloque blanco */
+    option {
+        background-color: #0a0a0a !important;
+        color: #ffffff !important;
+        padding: 10px;
+    }
+
+    select:focus, input:focus {
+        border-color: #9AFF5F;
+        background: rgba(154, 255, 95, 0.05);
+        box-shadow: 0 0 15px rgba(154, 255, 95, 0.1);
+    }
+
+    .label-neuro {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #9AFF5F;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .custom-input-hidden {
+        display: none;
+        margin-top: 0.5rem;
+        animation: fadeInUp 0.3s ease-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-20 selection:bg-neuro-green selection:text-black relative">
+
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-[-1]"></div>
+
+  <!-- Header Original -->
+  <header class="sticky top-0 z-50 glass-panel border-t-0 border-x-0 rounded-b-2xl mb-8 backdrop-blur-xl bg-black/50">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-16 rounded-xl bg-black border border-neuro-green/30 shadow-[0_0_15px_rgba(154,255,95,0.2)] flex items-center justify-center overflow-hidden relative group">
+            <div class="absolute inset-0 bg-neuro-green/10"></div>
+            <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/d40e800d52607451a69ec394b84db98fc36a8d82/logo_%20Neurotech_soluciones.png" 
+                 alt="NeuroTech Logo" 
+                 class="w-full h-full object-contain p-0.5">
+        </div>
+        <div class="hidden sm:block">
+            <h1 class="text-white font-orbitron font-bold text-lg leading-tight tracking-wider">NEUROTECH</h1>
+            <p class="text-neuro-green text-[10px] tracking-[0.1em] uppercase font-bold opacity-80">Capacitación y Estrategia</p>
+        </div>
+      </div>
+      
+      <div class="hidden md:block">
+        <span class="flex items-center gap-2 px-3 py-1 rounded-full border border-neuro-blue/50 bg-neuro-blue/10 text-[10px] font-orbitron text-neuro-blue-light font-bold tracking-widest shadow-[0_0_10px_rgba(33,0,229,0.2)]">
+          <span class="w-1.5 h-1.5 rounded-full bg-neuro-blue animate-pulse"></span>
+          EN VIVO
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 space-y-12">
+
+    <!-- Hero Section -->
+    <div class="text-center pt-8">
+      <div class="inline-block mb-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] text-gray-400 font-orbitron tracking-widest uppercase">
+        Herramienta de Producción
+      </div>
+      <div class="flex flex-col items-center justify-center mb-6">
+        <div class="text-4xl md:text-5xl font-orbitron font-black tracking-tight flex items-center justify-center flex-wrap gap-x-3 gap-y-1">
+            <span id="typewriter-text" class="animate-text-gradient uppercase">Arquitecto de Realidad</span>
+            <span class="cursor-bar"></span>
+        </div>
+      </div>
+      <p class="text-gray-400 max-w-lg mx-auto text-sm leading-relaxed mb-8">
+        Sistema avanzado para la construcción de prompts hiperrealistas con fidelidad documental, enfoque en micro-textura de piel y estética auténtica del Cono Sur.
+      </p>
+
+      <button onclick="downloadPDF(this)" 
+              class="group relative inline-flex items-center gap-3 px-8 py-3 bg-white/5 border border-white/10 text-gray-200 font-orbitron font-bold text-sm rounded-xl hover:bg-neuro-green hover:text-black hover:border-neuro-green transition-all duration-300">
+        <i data-lucide="file-down" class="w-5 h-5"></i>
+        <span>DESCARGAR GUÍA</span>
+      </button>
+    </div>
+
+    <!-- Pestañas -->
+    <div class="flex justify-center border-b border-white/10 mb-8 overflow-x-auto">
+        <div class="flex space-x-2 md:space-x-8">
+            <button onclick="switchTab('bloque1')" id="tab-bloque1" class="tab-btn active px-6 py-4 font-orbitron text-sm font-bold text-gray-400 hover:text-white uppercase tracking-widest">BLOQUE 1</button>
+            <button onclick="switchTab('bloque2')" id="tab-bloque2" class="tab-btn px-6 py-4 font-orbitron text-sm font-bold text-gray-400 hover:text-white uppercase tracking-widest">BLOQUE 2</button>
+            <button onclick="switchTab('bloque3')" id="tab-bloque3" class="tab-btn px-6 py-4 font-orbitron text-sm font-bold text-gray-400 hover:text-white uppercase tracking-widest">BLOQUE 3</button>
+        </div>
+    </div>
+
+    <!-- CONTENIDO BLOQUE 1: ARQUITECTO DE REALIDAD -->
+    <div id="content-bloque1" class="space-y-8 animate-fade-in-up">
+        
+        <article class="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-60 h-60 bg-neuro-blue rounded-full filter blur-[100px] opacity-10"></div>
+            
+            <div class="flex items-center gap-3 mb-8 relative z-10">
+                <div class="bg-neuro-blue/10 p-3 rounded-xl border border-neuro-blue/30 shadow-[0_0_15px_rgba(33,0,229,0.2)]">
+                    <i data-lucide="scan-face" class="text-neuro-blue-light w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide uppercase">Ingeniería de Identidad</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                
+                <!-- Columna 1 -->
+                <div class="space-y-6">
+                    <label class="label-neuro">1. Sujeto y Captura</label>
+                    
+                    <div>
+                        <select id="gender" onchange="toggleCustom(this, 'gender_custom')" class="w-full p-4 rounded-xl">
+                            <option value="una mujer">Mujer</option>
+                            <option value="un hombre">Hombre</option>
+                            <option value="un niño">Niño/a</option>
+                            <option value="un grupo de personas">Grupo</option>
+                            <option value="custom">-- Personalizado --</option>
+                        </select>
+                        <input type="text" id="gender_custom" placeholder="Ej: un anciano" class="custom-input-hidden p-3 rounded-xl w-full">
+                    </div>
+
+                    <div>
+                        <select id="captureType" onchange="toggleCustom(this, 'captureType_custom')" class="w-full p-4 rounded-xl">
+                            <option value="smartphone mirror selfie">Smartphone Mirror Selfie</option>
+                            <option value="professional DSLR portrait">DSLR Professional Portrait</option>
+                            <option value="candid street photography">Candid Street Photography</option>
+                            <option value="cinematic still">Cinematic Still</option>
+                            <option value="custom">-- Otro tipo --</option>
+                        </select>
+                        <input type="text" id="captureType_custom" placeholder="Ej: polaroid scan" class="custom-input-hidden p-3 rounded-xl w-full">
+                    </div>
+
+                    <div>
+                        <select id="ethnicity" onchange="toggleCustom(this, 'ethnicity_custom')" class="w-full p-4 rounded-xl">
+                            <option value="con rasgos argentinos de ascendencia mediterránea">Argentino/a (Cono Sur)</option>
+                            <option value="latino/a de tez cálida y natural">Latino/a (General)</option>
+                            <option value="afrodescendiente de rasgos marcados">Afrodescendiente</option>
+                            <option value="custom">-- Describir etnia --</option>
+                        </select>
+                        <input type="text" id="ethnicity_custom" placeholder="Ej: rasgos nórdicos" class="custom-input-hidden p-3 rounded-xl w-full mt-2">
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="space-y-6">
+                    <label class="label-neuro">2. Acción y Escenario</label>
+                    
+                    <div>
+                        <select id="action" onchange="toggleCustom(this, 'action_custom')" class="w-full p-4 rounded-xl">
+                            <option value="mirando a la cámara con una expresión natural y calma">Mirando a cámara</option>
+                            <option value="sosteniendo un teléfono celular para tomar la foto">Sosteniendo celular</option>
+                            <option value="caminando por la calle distraído/a">Caminando</option>
+                            <option value="trabajando en una laptop">En la Laptop</option>
+                            <option value="custom">-- Escribir acción --</option>
+                        </select>
+                        <input type="text" id="action_custom" placeholder="Ej: bebiendo un café" class="custom-input-hidden p-3 rounded-xl w-full mt-2">
+                    </div>
+
+                    <div>
+                        <select id="location" onchange="toggleCustom(this, 'location_custom')" class="w-full p-4 rounded-xl">
+                            <option value="tomada en un interior minimalista con luz de ventana">Interior ventana</option>
+                            <option value="en una calle urbana de Mendoza">Calle de Mendoza</option>
+                            <option value="en una oficina tecnológica moderna">Oficina Tech</option>
+                            <option value="custom">-- Escribir lugar --</option>
+                        </select>
+                        <input type="text" id="location_custom" placeholder="Ej: en un viñedo de San Rafael" class="custom-input-hidden p-3 rounded-xl w-full mt-2">
+                    </div>
+
+                    <div>
+                        <select id="clothing" onchange="toggleCustom(this, 'clothing_custom')" class="w-full p-4 rounded-xl">
+                            <option value="una sudadera con capucha (hoodie)">Sudadera / Hoodie</option>
+                            <option value="una camisa de lino elegante">Camisa Lino</option>
+                            <option value="un blazer moderno de lana">Blazer Moderno</option>
+                            <option value="custom">-- Escribir prenda --</option>
+                        </select>
+                        <input type="text" id="clothing_custom" placeholder="Ej: un suéter de lana" class="custom-input-hidden p-3 rounded-xl w-full mt-2">
+                    </div>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="space-y-6">
+                    <label class="label-neuro">3. Motor Técnico</label>
+                    
+                    <div>
+                        <select id="aspectRatio" class="w-full p-4 rounded-xl">
+                            <option value="9:16">9:16 (Stories/Vertical)</option>
+                            <option value="4:5">4:5 (Instagram Feed)</option>
+                            <option value="1:1">1:1 (Cuadrado)</option>
+                            <option value="16:9">16:9 (Horizontal)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select id="skinDetail" onchange="toggleCustom(this, 'skinDetail_custom')" class="w-full p-4 rounded-xl">
+                            <option value="poros visibles, micro-textura fina y real">Textura de Piel HD</option>
+                            <option value="textura natural con pecas sutiles">Natural con pecas</option>
+                            <option value="custom">-- Otros detalles --</option>
+                        </select>
+                        <input type="text" id="skinDetail_custom" placeholder="Ej: cicatriz sutil" class="custom-input-hidden p-3 rounded-xl w-full mt-2">
+                    </div>
+
+                    <div>
+                        <select id="lightType" onchange="toggleCustom(this, 'lightType_custom')" class="w-full p-4 rounded-xl">
+                            <option value="Luz real natural con calidez ligera">Luz Natural Cálida</option>
+                            <option value="Luz de atardecer (Golden Hour)">Golden Hour</option>
+                            <option value="Iluminación de estudio neutra">Estudio Neutra</option>
+                            <option value="custom">-- Describir luz --</option>
+                        </select>
+                        <input type="text" id="lightType_custom" placeholder="Ej: luz de neón azul" class="custom-input-hidden p-3 rounded-xl w-full mt-2">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones Mejorados -->
+            <div class="mt-12 flex flex-col md:flex-row gap-4 relative z-10">
+                <button onclick="surpriseMe()" class="flex-1 py-4 rounded-xl border border-white/10 text-white font-orbitron text-xs font-bold hover:bg-white/5 transition-all uppercase tracking-widest">
+                    ✨ Azar
+                </button>
+                <button onclick="compilePrompt()" class="flex-[2] py-4 rounded-xl bg-neuro-green text-black font-orbitron text-xs font-bold hover:shadow-[0_0_25px_rgba(154,255,95,0.4)] transition-all uppercase tracking-widest">
+                    Compilar Arquitectura
+                </button>
+            </div>
+
+            <!-- Resultado Profesional -->
+            <div id="resultArea" class="mt-10 space-y-4 hidden animate-fade-in-up relative z-10">
+                <div class="flex justify-between items-end">
+                    <label class="label-neuro !mb-0">Prompt Maestro Final</label>
+                    <button onclick="copyToClipboard('outputPrompt', this)" class="text-neuro-green text-[10px] font-bold flex items-center gap-1 hover:text-white transition-colors uppercase tracking-widest">
+                        <i data-lucide="copy" class="w-3 h-3"></i> COPIAR
+                    </button>
+                </div>
+                <textarea id="outputPrompt" readonly class="w-full h-56 p-4 rounded-2xl font-mono text-[11px] leading-relaxed border-neuro-green/20 bg-black/60"></textarea>
+            </div>
+        </article>
+    </div>
+
+    <!-- BLOQUES PRÓXIMAMENTE -->
+    <div id="content-bloque2" class="hidden animate-fade-in-up py-20 text-center glass-panel rounded-3xl">
+        <h2 class="text-3xl font-orbitron font-bold text-gray-700 uppercase tracking-[0.3em]">PRÓXIMAMENTE</h2>
+        <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">Contenido en preparación para la Academia</p>
+    </div>
+
+    <div id="content-bloque3" class="hidden animate-fade-in-up py-20 text-center glass-panel rounded-3xl">
+        <h2 class="text-3xl font-orbitron font-bold text-gray-700 uppercase tracking-[0.3em]">BLOQUE 3</h2>
+        <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">Módulo de Estrategia 360 en desarrollo</p>
+    </div>
+
+  </main>
+
+  <!-- Footer Original Mejorado -->
+  <footer class="glass-panel border-b-0 border-x-0 rounded-t-3xl py-12 mt-12 bg-black/60">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="border-b border-white/10 pb-8 mb-8">
+          <p class="text-[10px] text-gray-500 max-w-3xl mx-auto leading-relaxed uppercase tracking-wider">
+              Material exclusivo de la Diplomatura: <strong class="text-gray-400">Inteligencia Artificial para el ejercicio profesional</strong>.
+              <br><br>
+              Uso puramente académico. Queda prohibida la divulgación masiva de fragmentos protegidos por la ley 11723.
+          </p>
+      </div>
+
+      <div class="flex justify-center gap-12 mb-8">
+        <a href="https://wa.me/5492604087086" target="_blank" class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-2">
+            <img src="https://img.icons8.com/color/96/whatsapp--v1.png" width="48" height="48" alt="WhatsApp">
+            <span class="text-[10px] font-orbitron text-gray-500 group-hover:text-neuro-green transition-colors uppercase tracking-widest">WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/neurotech.soluciones/" target="_blank" class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-2">
+             <img src="https://img.icons8.com/color/96/instagram-new--v1.png" width="48" height="48" alt="Instagram">
+             <span class="text-[10px] font-orbitron text-gray-500 group-hover:text-[#E1306C] transition-colors uppercase tracking-widest">Instagram</span>
+        </a>
+        <a href="https://www.youtube.com/@neurotech-soluciones" target="_blank" class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:-translate-y-2">
+            <img src="https://img.icons8.com/color/96/youtube-play.png" width="48" height="48" alt="YouTube">
+            <span class="text-[10px] font-orbitron text-gray-500 group-hover:text-[#FF0000] transition-colors uppercase tracking-widest">YouTube</span>
+        </a>
+      </div>
+
+      <div class="text-gray-600 text-[10px] font-orbitron border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 uppercase tracking-[0.1em]">
+        <p>NEUROTECH SOLUCIONES © 2026. INTELIGENCIA QUE TRANSFORMA.</p>
+        <p class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-neuro-green"></span>SAN RAFAEL, MENDOZA</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-neuro-green text-black px-8 py-3 rounded-xl shadow-[0_0_30px_rgba(154,255,95,0.4)] z-50 opacity-0 translate-y-10 transition-all duration-300 pointer-events-none border border-white/20">
+    <span class="font-orbitron font-bold text-xs tracking-widest uppercase">Arquitectura Copiada</span>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function switchTab(tabId) {
+        ['bloque1', 'bloque2', 'bloque3'].forEach(id => {
+            document.getElementById('content-' + id).classList.add('hidden');
+            document.getElementById('tab-' + id).classList.remove('active', 'text-white');
+        });
+        document.getElementById('content-' + tabId).classList.remove('hidden');
+        document.getElementById('tab-' + tabId).classList.add('active', 'text-white');
+    }
+
+    function toggleCustom(selectElement, customId) {
+        const customInput = document.getElementById(customId);
+        if (selectElement.value === 'custom') {
+            customInput.style.display = 'block';
+            customInput.classList.remove('hidden');
+            customInput.focus();
+        } else {
+            customInput.style.display = 'none';
+        }
+    }
+
+    function getVal(id) {
+        const select = document.getElementById(id);
+        const custom = document.getElementById(id + '_custom');
+        if (select && select.value === 'custom' && custom) {
+            return custom.value || "[Pendiente]";
+        }
+        return select ? select.value : "";
+    }
+
+    function compilePrompt() {
+        const capture = getVal('captureType');
+        const isSmartphone = capture.toLowerCase().includes('smartphone') || capture.toLowerCase().includes('selfie');
+        const cameraLogic = isSmartphone 
+            ? "Smartphone camera behavior, slight lens distortion typical of mobile wide-angle lenses, subtle sensor grain, natural edge softness." 
+            : "Professional optics behavior, high-resolution sensor detail, precise focus on subject features, clean RAW photo aesthetic, high dynamic range.";
+
+        const prompt = `${getVal('aspectRatio')} aspect ratio, ultra-realistic ${capture} de ${getVal('gender')} ${getVal('ethnicity')}, ${getVal('location')}. Acción: ${getVal('action')}. Vistiendo ${getVal('clothing')}. 
+
+Detalle de Piel: ${getVal('skinDetail')}, natural acne marks with organic variation, uneven pigmentation, natural shine on high points (cheekbones, nose), matte elsewhere. No symmetry correction. Healthy, living skin.
+
+Luz y Color: ${getVal('lightType')} con contraste natural. Colors true to life, rich dimensional skin tones, no filters, no smoothing.
+
+Cámara: ${cameraLogic} Documentary-editorial sensibility. Real person, real moment.
+
+STRICT NEGATIVES: faded colors, pastel tones, beige aesthetic, flat lighting, overexposed whites. No glitter, plastic skin, skincare look, studio lighting, cartoon or 3D style, text or logos.`;
+
+        document.getElementById('outputPrompt').value = prompt;
+        document.getElementById('resultArea').classList.remove('hidden');
+        document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function surpriseMe() {
+        const selects = document.querySelectorAll('select');
+        selects.forEach(sel => {
+            if(sel.id === "aspectRatio") return;
+            const validOptions = Array.from(sel.options).filter(opt => opt.value !== 'custom');
+            sel.value = validOptions[Math.floor(Math.random() * validOptions.length)].value;
+            const next = sel.nextElementSibling;
+            if(next && next.tagName === 'INPUT') next.style.display = 'none';
+        });
+        compilePrompt();
+    }
+
+    function copyToClipboard(id, btn) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.value).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('opacity-0', 'translate-y-10');
+        setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10'), 2000);
+      });
+    }
+
+    function downloadPDF(btn) {
+        btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>PROCESANDO...</span>`;
+        lucide.createIcons();
+        setTimeout(() => {
+            alert("Guía de Arquitectura de Realidad generada. El archivo incluye los parámetros de realismo documental de NeuroTech.");
+            btn.innerHTML = `<i data-lucide="file-down" class="w-5 h-5"></i><span>DESCARGAR GUÍA</span>`;
+            lucide.createIcons();
+        }, 1200);
+    }
+  </script>
+</body>
+</html>
