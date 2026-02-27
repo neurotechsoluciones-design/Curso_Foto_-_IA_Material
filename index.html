@@ -87,10 +87,16 @@
     }
 
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #0a0a0a; }
     ::-webkit-scrollbar-thumb { background: #2100E5; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #9AFF5F; }
+
+    /* Scrollbar específico para el editor de código */
+    .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #1a1a1a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #555; }
 
     .animate-text-gradient {
       background: linear-gradient(to right, #ffffff, #9AFF5F, #2100E5, #ffffff);
@@ -156,6 +162,44 @@
         margin-top: 0.5rem;
         animation: fadeInUp 0.3s ease-out;
     }
+
+    /* Estilos para Chips del Generador del Bloque 3 */
+    .chip-select {
+        transition: all 0.2s;
+        cursor: pointer;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+    .chip-select:hover {
+        background-color: rgba(154, 255, 95, 0.1);
+        border-color: rgba(154, 255, 95, 0.3);
+    }
+    .chip-select.selected {
+        background-color: #9AFF5F;
+        color: black;
+        border-color: #9AFF5F;
+        font-weight: bold;
+    }
+
+    .btn-cyber {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    .btn-cyber::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+    .btn-cyber:hover::before { left: 100%; }
+    .btn-cyber:active { transform: scale(0.95); }
   </style>
 </head>
 <body class="min-h-screen pb-20 selection:bg-neuro-green selection:text-black relative">
@@ -197,7 +241,7 @@
       <div class="flex flex-col items-center justify-center mb-6">
         <div class="text-4xl md:text-5xl font-orbitron font-black tracking-tight flex items-center justify-center flex-wrap gap-x-3 gap-y-1">
             <span id="typewriter-text" class="animate-text-gradient uppercase">Arquitecto de Realidad</span>
-            <span class="cursor-bar"></span>
+            <span class="cursor-bar inline-block w-1 h-8 bg-neuro-green ml-1 animate-blink align-middle"></span>
         </div>
       </div>
       <p class="text-gray-400 max-w-lg mx-auto text-sm leading-relaxed mb-8">
@@ -365,15 +409,297 @@
         </article>
     </div>
 
-    <!-- BLOQUES PRÓXIMAMENTE -->
-    <div id="content-bloque2" class="hidden animate-fade-in-up py-20 text-center glass-panel rounded-3xl">
-        <h2 class="text-3xl font-orbitron font-bold text-gray-700 uppercase tracking-[0.3em]">PRÓXIMAMENTE</h2>
-        <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">Contenido en preparación para la Academia</p>
+    <!-- CONTENIDO BLOQUE 2: AUDIOVISUAL AI ART -->
+    <div id="content-bloque2" class="hidden animate-fade-in-up space-y-12">
+        <div class="text-center mb-10 mt-8">
+            <h2 class="text-2xl md:text-3xl font-orbitron font-bold text-white mt-4">
+                GUÍA AUDIOVISUAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-neuro-blue-light to-neuro-blue">AI ART</span>
+            </h2>
+            <p class="text-gray-300 text-sm mt-2">Prompts de ingeniería inversa para generación de imágenes hiperrealistas.</p>
+        </div>
+
+        <!-- 1. MARCA PERSONAL PREMIUM -->
+        <article class="glass-panel rounded-3xl p-1 relative group">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-neuro-blue via-neuro-green to-neuro-dark opacity-20 group-hover:opacity-50 rounded-3xl blur transition duration-500"></div>
+            
+            <div class="relative bg-neuro-dark/95 h-full rounded-[20px] p-6 md:p-8 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-neuro-blue/10 p-3 rounded-xl border border-neuro-blue/30 shadow-[0_0_15px_rgba(33,0,229,0.15)]">
+                                <i data-lucide="aperture" class="text-neuro-blue-light w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-orbitron font-bold text-white tracking-wide">Marca Personal Premium</h3>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-neuro-green animate-pulse"></span>
+                                    <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Formato JSON • Nano Banana Style</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-gray-300 mb-6 font-light border-l-2 border-neuro-blue/50 pl-4">
+                        Prompt estructurado para mantener la identidad facial exacta mientras se mejora la calidad estética a nivel editorial.
+                    </p>
+
+                    <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                        <div id="prompt-visual-1">
+<div class="mb-4">
+  <strong class="text-neuro-green">**R (ROL):**</strong><br>
+  Actuá como fotógrafo publicitario de élite especializado en marca personal (headshots premium, estética editorial y corporativa). Tu objetivo es crear imágenes hiperrealistas y vendibles para Instagram.
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-green">**C (CONTEXTO):**</strong><br>
+  Crear una foto de marca personal premium para el perfil de Instagram usando como referencia la foto subida.
+  
+  <div class="mt-2">
+    <strong class="text-neuro-blue-light text-xs uppercase">Referencia Obligatoria:</strong><br>
+    Analizá la foto subida y usala como referencia principal para la persona (misma identidad).
+  </div>
+
+  <div class="mt-2">
+    <strong class="text-neuro-blue-light text-xs uppercase">Restricciones Identidad:</strong>
+    <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+      <li>- NO modificar identidad: mantener el rostro, rasgos faciales, edad aproximada y tono de piel del sujeto de la foto subida.</li>
+      <li>- NO cambiar género ni expresión base (solo mejorar naturalidad si hace falta).</li>
+      <li>- NO deformar manos, ojos ni dientes.</li>
+      <li>- NO filtros exagerados ni efecto plástico.</li>
+      <li>- Si tiene tatuajes: conservarlos tal cual. NO inventar tatuajes.</li>
+    </ul>
+  </div>
+
+  <div class="mt-2">
+    <strong class="text-neuro-blue-light text-xs uppercase">Negativos (Evitar):</strong>
+    <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+      <li>- Evitar cara de muñeco / plástico / piel perfecta irreal.</li>
+      <li>- Evitar manos deformes o dedos extra.</li>
+      <li>- Evitar dientes raros o sonrisa forzada.</li>
+      <li>- Evitar distorsión de lente extrema.</li>
+      <li>- Evitar filtros tipo beauty agresivos.</li>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <strong class="text-neuro-green">**I (INSTRUCCIONES):**</strong><br>
+  dame un promt en estilo json para nano banana en cuadro de código. <br>
+  `Entregar en un bloque de código json`
+</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="copyToClipboard('prompt-visual-1', this)" 
+                                class="btn-cyber flex items-center justify-center gap-3 bg-neuro-green text-black font-orbitron font-bold py-3 px-8 rounded-xl hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(154,255,95,0.3)] hover:shadow-[0_0_30px_rgba(154,255,95,0.6)] w-full sm:w-auto">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span>COPIAR PROMPT</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. ESTRATEGIA DE CAMPAÑA 360 -->
+        <article class="glass-panel rounded-3xl p-1 relative group mt-8">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-neuro-blue to-white opacity-10 group-hover:opacity-30 rounded-3xl blur transition duration-500"></div>
+            <div class="relative bg-neuro-dark/90 h-full rounded-[20px] p-6 md:p-8 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-neuro-blue/10 p-2 rounded-lg border border-neuro-blue/30">
+                            <i data-lucide="rocket" class="text-white w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-white tracking-wide">Estrategia de Campaña 360°</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-6 font-light border-l-2 border-white/30 pl-4">
+                         Automatiza tu estrategia digital: desde la identidad de marca hasta el plan de contenidos semanal.
+                    </p>
+                    <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner max-h-[500px] overflow-y-auto custom-scrollbar">
+                        <div id="prompt-nb-7">
+<div class="mb-4">Actúa como mi Director de Estrategia de Marca y Marketing Digital (Senior). Tu misión es facilitarme la vida: yo te doy los datos básicos y tú haces todo el análisis, la investigación y la estrategia.</div>
+
+<div class="mb-2"><strong class="text-neuro-blue-light">**TU PROTOCOLO DE ACTUACIÓN:**</strong></div>
+
+<div class="mb-4">
+  <strong class="text-neuro-green">## PASO 1: LA ENTREVISTA GUIADA</strong><br>
+  No generes ninguna estrategia todavía. Tu primera acción es saludarme y presentarme el siguiente MENÚ DE SELECCIÓN para que yo configure la campaña. Copia y pega esta lista exactamente para que yo pueda responder:
+</div>
+
+<div class="mb-4 pl-4 border-l border-gray-700">
+  <div class="mb-2 text-white font-bold">---</div>
+  <div class="mb-2"><strong class="text-white">**POR FAVOR, RESPONDE A ESTOS 4 PUNTOS:**</strong></div>
+  
+  <div class="mb-2">
+    <strong class="text-neuro-green">**A. TU ENLACE O DESCRIPCIÓN (Fundamental para mi investigación):**</strong><br>
+    * Pega aquí tu Instagram, Web, TikTok , sube un documento o describe tu negocio si no tienes links.
+  </div>
+
+  <div class="mb-2">
+    <strong class="text-neuro-green">**B. ELIGE TU OBJETIVO (Responde con el número):**</strong><br>
+    1. Lanzar un producto<br>
+    2. Lanzar un curso<br>
+    3. Lanzar un servicio<br>
+    4. Aumentar ventas<br>
+    5. Posicionamiento / Seguidores<br>
+    6. Otro (aclarar)
+  </div>
+
+  <div class="mb-2">
+    <strong class="text-neuro-green">**C. ELIGE TU CANAL DE VENTA (Donde se cierra el dinero):**</strong><br>
+    7. WhatsApp<br>
+    8. Instagram DM<br>
+    9. Web / Landing Page<br>
+    10. Tienda Online<br>
+    11. Otro (Aclarar)
+  </div>
+
+  <div class="mb-2">
+    <strong class="text-neuro-green">**D. TU DISPONIBILIDAD DE TIEMPO (Para ajustar el plan):**</strong><br>
+    12. Poca (1-2 horas/semana)<br>
+    13. Media (3-5 horas/semana)<br>
+    14. Alta (Tengo equipo o mucho tiempo)
+  </div>
+  <div class="mb-2 text-white font-bold">---</div>
+</div>
+
+<div class="mb-4 text-xs text-gray-500 italic">> [DETENTE AQUÍ Y ESPERA MI RESPUESTA CON LOS DATOS]</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-green">## PASO 2: EL ANÁLISIS Y LA ESTRATEGIA</strong><br>
+  Una vez recibas mis respuestas y mi enlace:<br>
+  1. <strong class="text-white">**INVESTIGA:**</strong> Entra al link (o analiza la descripción) y deduce tú mismo mi identidad de marca, mi cliente ideal y mis fortalezas. No me preguntes, dedúcelo.<br>
+  2. <strong class="text-white">**EJECUTA:**</strong> Genera el siguiente informe estratégico basándote en tu investigación:
+</div>
+
+<div class="mb-4">
+  <div class="mb-2 text-white font-bold">ENTREGABLE FINAL (Usa este formato):</div>
+  
+  <div class="mb-3">
+    <strong class="text-neuro-blue-light">### 1) 📸 FOTO RÁPIDA DE MARCA (Análisis de identidad)</strong><br>
+    * <strong class="text-white">**Propuesta de valor detectada:**</strong> (Redáctala en 1 frase potente).<br>
+    * <strong class="text-white">**Estilo Visual y Colores:**</strong> (Si mi marca tiene colores, úsalos. Si no, SUGIERE una paleta de 3 colores y un estilo de fotos/video acorde a mi nicho).<br>
+    * <strong class="text-white">**Voz de Marca:**</strong> (Define cómo debo hablar: serio, divertido, inspirador, etc.).
+  </div>
+
+  <div>
+    <strong class="text-neuro-blue-light">### 2) 🚀 ESTRATEGIA DE VENTA EN 1 PÁGINA (Modelo 5P Simplificado)</strong><br>
+    * <strong class="text-white">**PRODUCTO:**</strong> Ángulo ganador + Promesa recomendada + 1 Bonus sugerido para aumentar valor.<br>
+    * <strong class="text-white">**PRECIO:**</strong> Recomendación de estructura de precio (o cómo presentarlo).<br>
+    * <strong class="text-white">**PLAZA (El flujo):**</strong> Ruta exacta. Ej: Reel (gancho) → DM (automatización) → WhatsApp (cierre).<br>
+    * <strong class="text-white">**PROMOCIÓN (Plan de Acción):**</strong> Plan de contenidos exacto para 7 días (qué subir cada día para lograr el objetivo que elegí).<br>
+    * <strong class="text-white">**PERSONAS (Psicología):**</strong> 5 Objeciones probables de mi cliente + 5 Respuestas cortas listas para copiar y pegar.
+  </div>
+</div>
+
+<div class="mt-4">Si has entendido tu rol, salúdame y preséntame el menú del PASO 1.</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="copyToClipboard('prompt-nb-7', this)" 
+                                class="btn-cyber flex items-center justify-center gap-2 bg-neuro-blue text-white hover:bg-white hover:text-neuro-blue font-orbitron text-xs font-bold py-3 px-6 rounded-lg transition-all shadow-[0_0_15px_rgba(33,0,229,0.2)] w-full sm:w-auto">
+                          <i data-lucide="copy" class="w-3 h-3"></i>
+                          <span>COPIAR ESTRATEGIA</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- 3. EJECUCIÓN DÍA 1 (VENTA VISUAL) -->
+        <article class="glass-panel rounded-3xl p-1 relative group mt-8">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-neuro-blue-light to-neuro-blue opacity-10 group-hover:opacity-30 rounded-3xl blur transition duration-500"></div>
+            <div class="relative bg-neuro-dark/90 h-full rounded-[20px] p-6 md:p-8 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-neuro-blue/10 p-2 rounded-lg border border-neuro-blue/30">
+                            <i data-lucide="image-plus" class="text-neuro-blue-light w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-white tracking-wide">Ejecución Día 1 (Venta Visual)</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-6 font-light border-l-2 border-neuro-blue/30 pl-4">
+                         Genera la imagen de venta perfecta usando la información de la estrategia anterior y una foto de referencia.
+                    </p>
+                    <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                        <div id="prompt-visual-2">
+Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir y una foto y proponme un prom para Nano Banana para crear una imagen que venda en formato JSON en cuadro de texto de código. <br>
+`Entregar en un bloque de código json`
+<br><br>
+<strong class="text-neuro-green">PROHIBIDO:</strong><br>
+- Cambiar colores, logos o etiquetas.<br>
+- Inventar o rediseñar marcas.<br>
+- Alterar textos impresos.<br>
+- Modificar rasgos físicos.<br>
+- Transformar el producto para hacerlo “más premium”.
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="copyToClipboard('prompt-visual-2', this)" 
+                                class="btn-cyber flex items-center justify-center gap-2 bg-neuro-blue/10 border border-neuro-blue text-neuro-blue-light hover:bg-neuro-blue hover:text-white font-orbitron text-xs font-bold py-3 px-6 rounded-lg transition-all w-full sm:w-auto">
+                          <i data-lucide="copy" class="w-3 h-3"></i>
+                          <span>COPIAR PROMPT</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
     </div>
 
-    <div id="content-bloque3" class="hidden animate-fade-in-up py-20 text-center glass-panel rounded-3xl">
-        <h2 class="text-3xl font-orbitron font-bold text-gray-700 uppercase tracking-[0.3em]">BLOQUE 3</h2>
-        <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">Módulo de Estrategia 360 en desarrollo</p>
+    <!-- CONTENIDO BLOQUE 3: ANIMACIÓN DE IMAGEN (GROK) -->
+    <div id="content-bloque3" class="hidden animate-fade-in-up space-y-12">
+        <!-- ENCABEZADO -->
+        <div class="text-center py-8">
+            <h2 class="text-3xl font-orbitron font-bold text-white mb-4">ANIMACIÓN <span class="text-neuro-green">GROK</span></h2>
+            <p class="text-gray-300 text-sm max-w-xl mx-auto mb-6">
+                Transforma tus imágenes generadas en clips de video de alta calidad.
+            </p>
+        </div>
+
+        <article class="glass-panel rounded-3xl p-1 relative group">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-neuro-green to-white opacity-10 group-hover:opacity-30 rounded-3xl blur transition duration-500"></div>
+            <div class="relative bg-neuro-dark/90 h-full rounded-[20px] p-6 md:p-8 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-neuro-green/10 p-2 rounded-lg border border-neuro-green/30">
+                            <i data-lucide="film" class="text-neuro-green w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-orbitron font-bold text-white tracking-wide">Animación de Imagen (Grok)</h3>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-6 font-light border-l-2 border-neuro-green/30 pl-4">
+                         Transforma imágenes estáticas en clips de video manteniendo la fidelidad visual.
+                    </p>
+                    <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                        <div id="prompt-visual-3">
+<div class="mb-4">
+  <strong class="text-neuro-green">**R (ROL):**</strong><br>
+  Actúa como director de animación y diseñador de prompts experto en Grok, especializado en transformar imágenes estáticas en clips cortos, claros y visualmente atractivos.
+</div>
+<div class="mb-4">
+  <strong class="text-neuro-green">**C (CONTEXTO):**</strong><br>
+  Observa la imagen de referencia. Quiero convertirla en una animación manteniendo el estilo visual, los personajes/objetos principales, la iluminación y el encuadre lo más fiel posible.
+  <br><br>
+  <span class="text-neuro-blue-light font-bold text-xs uppercase">Restricciones:</span><br>
+  No cambiar identidad del sujeto, no deformar caras, no agregar elementos que no estén en la imagen.
+</div>
+<div>
+  <strong class="text-neuro-green">**I (INSTRUCCIONES):**</strong><br>
+  Genera 1 prompt en cuadro de codigo listo para pegar en Grok.<br>
+  <span class="text-neuro-blue-light font-bold text-xs uppercase">Duración:</span> 4 a 6 segundos.
+</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="copyToClipboard('prompt-visual-3', this)" 
+                                class="btn-cyber flex items-center justify-center gap-2 bg-neuro-green/10 border border-neuro-green text-neuro-green hover:bg-neuro-green hover:text-black font-orbitron text-xs font-bold py-3 px-6 rounded-lg transition-all w-full sm:w-auto">
+                          <i data-lucide="copy" class="w-3 h-3"></i>
+                          <span>COPIAR PROMPT</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
     </div>
 
   </main>
@@ -411,9 +737,10 @@
     </div>
   </footer>
 
-  <!-- Toast -->
-  <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-neuro-green text-black px-8 py-3 rounded-xl shadow-[0_0_30px_rgba(154,255,95,0.4)] z-50 opacity-0 translate-y-10 transition-all duration-300 pointer-events-none border border-white/20">
-    <span class="font-orbitron font-bold text-xs tracking-widest uppercase">Arquitectura Copiada</span>
+  <!-- Toast (Actualizado para funcionar de forma genérica) -->
+  <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-neuro-green text-black px-8 py-3 rounded-xl shadow-[0_0_30px_rgba(154,255,95,0.4)] flex items-center gap-3 z-50 opacity-0 translate-y-10 transition-all duration-300 pointer-events-none border border-white/20">
+    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+    <span class="font-orbitron font-bold text-xs tracking-widest uppercase">COPIADO AL PORTAPAPELES</span>
   </div>
 
   <script>
@@ -428,6 +755,7 @@
         document.getElementById('tab-' + tabId).classList.add('active', 'text-white');
     }
 
+    // Funciones del Bloque 1
     function toggleCustom(selectElement, customId) {
         const customInput = document.getElementById(customId);
         if (selectElement.value === 'custom') {
@@ -482,13 +810,17 @@ STRICT NEGATIVES: faded colors, pastel tones, beige aesthetic, flat lighting, ov
         compilePrompt();
     }
 
-    function copyToClipboard(id, btn) {
-      const el = document.getElementById(id);
-      navigator.clipboard.writeText(el.value).then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.remove('opacity-0', 'translate-y-10');
-        setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10'), 2000);
-      });
+    // Función de copia inteligente (modificada para servir en divs y textareas)
+    function copyToClipboard(id, btnElement) {
+        const el = document.getElementById(id);
+        // Detecta si es un textarea/input o un div estructurado
+        const textToCopy = (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') ? el.value : el.innerText;
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0', 'translate-y-10');
+            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10'), 2000);
+        });
     }
 
     function downloadPDF(btn) {
