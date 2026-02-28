@@ -120,7 +120,6 @@
       box-shadow: 0 0 10px #9AFF5F;
     }
 
-    /* FIX: SELECTOR VISIBILITY */
     select {
         background: rgba(20, 20, 20, 0.95);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -133,7 +132,6 @@
         background-size: 1em;
     }
     
-    /* Forzar fondo oscuro en las opciones para evitar el bloque blanco */
     option {
         background-color: #0a0a0a !important;
         color: #ffffff !important;
@@ -163,24 +161,6 @@
         animation: fadeInUp 0.3s ease-out;
     }
 
-    /* Estilos para Chips del Generador del Bloque 3 */
-    .chip-select {
-        transition: all 0.2s;
-        cursor: pointer;
-        font-size: 10px;
-        white-space: nowrap;
-    }
-    .chip-select:hover {
-        background-color: rgba(154, 255, 95, 0.1);
-        border-color: rgba(154, 255, 95, 0.3);
-    }
-    .chip-select.selected {
-        background-color: #9AFF5F;
-        color: black;
-        border-color: #9AFF5F;
-        font-weight: bold;
-    }
-
     .btn-cyber {
       position: relative;
       overflow: hidden;
@@ -200,6 +180,22 @@
     }
     .btn-cyber:hover::before { left: 100%; }
     .btn-cyber:active { transform: scale(0.95); }
+
+    /* ESTILOS ESPECÍFICOS PARA EL PDF */
+    .pdf-no-break { 
+      page-break-inside: avoid; 
+      break-inside: avoid; 
+      margin-bottom: 20px; 
+    }
+    
+    #pdf-template [id^="pdf-content-"] * {
+        color: #1a1a1a !important; 
+        text-shadow: none !important;
+    }
+    #pdf-template [id^="pdf-content-"] strong, 
+    #pdf-template [id^="pdf-content-"] b {
+        color: #2100E5 !important; 
+    }
   </style>
 </head>
 <body class="min-h-screen pb-20 selection:bg-neuro-green selection:text-black relative">
@@ -251,7 +247,7 @@
       <button onclick="downloadPDF(this)" 
               class="group relative inline-flex items-center gap-3 px-8 py-3 bg-white/5 border border-white/10 text-gray-200 font-orbitron font-bold text-sm rounded-xl hover:bg-neuro-green hover:text-black hover:border-neuro-green transition-all duration-300">
         <i data-lucide="file-down" class="w-5 h-5"></i>
-        <span>DESCARGAR GUÍA</span>
+        <span>DESCARGAR GUÍA EN PDF</span>
       </button>
     </div>
 
@@ -743,6 +739,72 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
     <span class="font-orbitron font-bold text-xs tracking-widest uppercase">COPIADO AL PORTAPAPELES</span>
   </div>
 
+  <!-- Plantilla oculta para generación PDF A4 Formateada -->
+  <div id="pdf-template" style="display: none; background: white; color: black; padding: 15mm; font-family: 'Inter', sans-serif; width: 190mm;">
+     <!-- Header A4 -->
+     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #2100E5; padding-bottom: 15px; margin-bottom: 30px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+           <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/d40e800d52607451a69ec394b84db98fc36a8d82/logo_%20Neurotech_soluciones.png" 
+                alt="Logo" style="width: 70px; height: 70px; object-fit: contain;" crossorigin="anonymous">
+           <div>
+              <h1 style="margin: 0; font-size: 22px; color: black; font-weight: 800; letter-spacing: 1px;">NEUROTECH SOLUCIONES</h1>
+              <p style="margin: 0; font-size: 11px; color: #2100E5; font-weight: bold; text-transform: uppercase;">Capacitación y Estrategia</p>
+           </div>
+        </div>
+        <div style="text-align: right;">
+           <p style="margin: 0; font-size: 11px; color: gray;">Guía de Prompts y Arquitectura</p>
+           <p style="margin: 0; font-size: 11px; color: gray;">San Rafael, Mendoza</p>
+        </div>
+     </div>
+
+     <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 30px; text-align: center; color: #2100E5; text-transform: uppercase;">Arquitecto de Realidad v3.0</h2>
+
+     <!-- Contenido Bloque 1 -->
+     <div style="margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+         <h3 style="background: #000; color: #9AFF5F; display: inline-block; padding: 5px 15px; border-radius: 4px; font-size: 14px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">BLOQUE 1: Arquitectura Generada</h3>
+         <div class="pdf-no-break">
+            <div id="pdf-content-bloque1" style="background: #f4f4f4; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 11px; line-height: 1.5; color: #1a1a1a;"></div>
+         </div>
+     </div>
+
+     <!-- Contenido Bloque 2 -->
+     <div style="margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
+         <h3 style="background: #000; color: #2100E5; display: inline-block; padding: 5px 15px; border-radius: 4px; font-size: 14px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">BLOQUE 2: Guía Audiovisual</h3>
+         
+         <div class="pdf-no-break">
+            <h4 style="font-size: 14px; font-weight: bold; color: black; margin-bottom: 10px;">Marca Personal Premium</h4>
+            <div id="pdf-content-visual-1" style="background: #f0f4ff; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 11px; line-height: 1.4;"></div>
+         </div>
+
+         <div class="pdf-no-break">
+            <h4 style="font-size: 14px; font-weight: bold; color: black; margin-bottom: 10px;">Estrategia de Campaña 360°</h4>
+            <div id="pdf-content-nb-7" style="background: #fdf6e3; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 11px; line-height: 1.4;"></div>
+         </div>
+
+         <div class="pdf-no-break">
+            <h4 style="font-size: 14px; font-weight: bold; color: black; margin-bottom: 10px;">Ejecución Día 1 (Venta Visual)</h4>
+            <div id="pdf-content-visual-2" style="background: #f0f4ff; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 11px; line-height: 1.4;"></div>
+         </div>
+     </div>
+
+     <!-- Contenido Bloque 3 -->
+     <div style="margin-bottom: 30px;">
+         <h3 style="background: #000; color: #9AFF5F; display: inline-block; padding: 5px 15px; border-radius: 4px; font-size: 14px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">BLOQUE 3: Animación Grok</h3>
+         
+         <div class="pdf-no-break">
+            <h4 style="font-size: 14px; font-weight: bold; color: black; margin-bottom: 10px;">Prompt Grok</h4>
+            <div id="pdf-content-visual-3" style="background: #fdf6e3; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 11px; line-height: 1.4;"></div>
+         </div>
+     </div>
+     
+     <!-- Pie de página PDF -->
+     <div style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 15px; text-align: justify; font-size: 9px; color: #666; line-height: 1.5;">
+        <p style="margin-bottom: 5px;">El uso del material proporcionado es puramente académico y se colocan a disposición en ocasión de la Diplomatura sobre: <strong>Inteligencia Artificial para el ejercicio profesional</strong>.</p>
+        <p>Queda prohibida su divulgación a título personal o ajena a la cursada (Ley 11.723).</p>
+        <p style="text-align: center; margin-top: 15px; font-weight: bold; color: #333;">NeuroTech Soluciones © 2026. Inteligencia que Transforma.</p>
+     </div>
+  </div>
+
   <script>
     lucide.createIcons();
 
@@ -823,14 +885,44 @@ STRICT NEGATIVES: faded colors, pastel tones, beige aesthetic, flat lighting, ov
         });
     }
 
+    // Funcionalidad de descarga a PDF en A4 
     function downloadPDF(btn) {
+        // 1. Verificar si el prompt del Bloque 1 fue generado (sino, compilarlo rápido)
+        const currentPrompt = document.getElementById('outputPrompt').value;
+        if (!currentPrompt) {
+            compilePrompt();
+        }
+
+        // 2. Mapear los datos visuales al PDF Template (Fondo Blanco)
+        document.getElementById('pdf-content-bloque1').innerText = document.getElementById('outputPrompt').value;
+        document.getElementById('pdf-content-visual-1').innerHTML = document.getElementById('prompt-visual-1').innerHTML;
+        document.getElementById('pdf-content-nb-7').innerHTML = document.getElementById('prompt-nb-7').innerHTML;
+        document.getElementById('pdf-content-visual-2').innerHTML = document.getElementById('prompt-visual-2').innerHTML;
+        document.getElementById('pdf-content-visual-3').innerHTML = document.getElementById('prompt-visual-3').innerHTML;
+
+        // 3. Modificar UI a "Cargando"
         btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>PROCESANDO...</span>`;
         lucide.createIcons();
-        setTimeout(() => {
-            alert("Guía de Arquitectura de Realidad generada. El archivo incluye los parámetros de realismo documental de NeuroTech.");
-            btn.innerHTML = `<i data-lucide="file-down" class="w-5 h-5"></i><span>DESCARGAR GUÍA</span>`;
+        
+        const element = document.getElementById('pdf-template');
+        element.style.display = 'block'; // Mostrar temporalmente para el canvas
+
+        // Opciones estrictas para formato A4
+        const opt = {
+          margin:       10, // 10 milímetros de margen
+          filename:     'NeuroTech_Guia_Arquitectura_Realidad.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+          pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] },
+          jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // 4. Ejecutar librería y restaurar estado
+        html2pdf().set(opt).from(element).save().then(() => {
+            element.style.display = 'none';
+            btn.innerHTML = `<i data-lucide="file-down" class="w-5 h-5"></i><span>DESCARGAR GUÍA EN PDF</span>`;
             lucide.createIcons();
-        }, 1200);
+        });
     }
   </script>
 </body>
