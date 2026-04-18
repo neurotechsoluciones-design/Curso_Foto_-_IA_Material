@@ -202,8 +202,15 @@
 
   <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-[-1]"></div>
 
+  <section class="relative w-full overflow-hidden min-h-[230px] h-[34vh] md:h-[42vh] max-h-[420px] bg-neuro-dark">
+    <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_hero.png"
+         alt="Hero principal de la landing page"
+         class="w-full h-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/10 to-black/60 pointer-events-none"></div>
+  </section>
+
   <!-- Header Original -->
-  <header class="sticky top-0 z-50 glass-panel border-t-0 border-x-0 rounded-b-2xl mb-8 backdrop-blur-xl bg-black/50">
+  <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-t-0 border-x-0 rounded-none mb-0 backdrop-blur-xl bg-black/30">
     <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div class="w-16 h-16 rounded-xl bg-black border border-neuro-green/30 shadow-[0_0_15px_rgba(154,255,95,0.2)] flex items-center justify-center overflow-hidden relative group">
@@ -262,7 +269,42 @@
 
     <!-- CONTENIDO BLOQUE 1: ARQUITECTO DE REALIDAD -->
     <div id="content-bloque1" class="space-y-8 animate-fade-in-up">
-        
+
+        <article class="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
+            <div class="absolute -left-16 -bottom-16 w-56 h-56 bg-neuro-green rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] gap-8 items-center relative z-10">
+                <div class="mx-auto w-full max-w-[260px]">
+                    <div class="rounded-[2rem] border border-white/10 bg-black/50 p-3 shadow-[0_0_35px_rgba(154,255,95,0.12)]">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_tomate.png"
+                             alt="Imagen de ejemplo vertical"
+                             class="w-full h-auto object-contain">
+                    </div>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neuro-green/20 bg-neuro-green/10 text-[10px] font-orbitron font-bold tracking-[0.2em] uppercase text-neuro-green">
+                        Paso 1
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-orbitron font-bold text-white tracking-wide uppercase">Como la IA interpreta una imagen</h3>
+                        <p class="text-sm md:text-base text-gray-300 leading-relaxed mt-4 max-w-2xl">
+                            Detecta formas, colores y patrones, los compara con millones de ejemplos y calcula que esta viendo.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-gray-200">
+                            &#128073; No "entiende" la imagen
+                        </div>
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-gray-200">
+                            &#128073; La interpreta a partir de algoritmos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
         <article class="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
             <div class="absolute -right-20 -top-20 w-60 h-60 bg-neuro-blue rounded-full filter blur-[100px] opacity-10"></div>
             
@@ -270,14 +312,18 @@
                 <div class="bg-neuro-blue/10 p-3 rounded-xl border border-neuro-blue/30 shadow-[0_0_15px_rgba(33,0,229,0.2)]">
                     <i data-lucide="scan-face" class="text-neuro-blue-light w-6 h-6"></i>
                 </div>
-                <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide uppercase">Ingeniería de Identidad</h3>
+                <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide uppercase">Constructor de Imagenes Hiperrealistas</h3>
             </div>
+
+            <p class="text-sm text-gray-300 leading-relaxed mb-8 max-w-3xl relative z-10">
+                Configura en pocos pasos una imagen hiperrealista con parametros ya pensados para guiar al usuario. Esta herramienta ordena la persona, el tipo de toma, el contexto y los detalles tecnicos para que crear en Gemini con Nano Banana sea mas facil, claro y rapido.
+            </p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                 
                 <!-- Columna 1 -->
                 <div class="space-y-6">
-                    <label class="label-neuro">1. Sujeto y Captura</label>
+                    <label class="label-neuro">1. Persona y tipo de foto</label>
                     
                     <div>
                         <select id="gender" onchange="toggleCustom(this, 'gender_custom')" class="w-full p-4 rounded-xl">
@@ -292,13 +338,13 @@
 
                     <div>
                         <select id="captureType" onchange="toggleCustom(this, 'captureType_custom')" class="w-full p-4 rounded-xl">
-                            <option value="smartphone mirror selfie">Smartphone Mirror Selfie</option>
-                            <option value="professional DSLR portrait">DSLR Professional Portrait</option>
-                            <option value="candid street photography">Candid Street Photography</option>
-                            <option value="cinematic still">Cinematic Still</option>
+                            <option value="una selfie frente al espejo con celular">Selfie frente al espejo con celular</option>
+                            <option value="un retrato profesional con camara reflex">Retrato profesional con camara</option>
+                            <option value="una fotografia espontanea en la calle">Foto espontanea en la calle</option>
+                            <option value="un fotograma cinematografico">Fotograma cinematografico</option>
                             <option value="custom">-- Otro tipo --</option>
                         </select>
-                        <input type="text" id="captureType_custom" placeholder="Ej: polaroid scan" class="custom-input-hidden p-3 rounded-xl w-full">
+                        <input type="text" id="captureType_custom" placeholder="Ej: foto analogica escaneada" class="custom-input-hidden p-3 rounded-xl w-full">
                     </div>
 
                     <div>
@@ -339,7 +385,7 @@
 
                     <div>
                         <select id="clothing" onchange="toggleCustom(this, 'clothing_custom')" class="w-full p-4 rounded-xl">
-                            <option value="una sudadera con capucha (hoodie)">Sudadera / Hoodie</option>
+                            <option value="una sudadera con capucha">Sudadera con capucha</option>
                             <option value="una camisa de lino elegante">Camisa Lino</option>
                             <option value="un blazer moderno de lana">Blazer Moderno</option>
                             <option value="custom">-- Escribir prenda --</option>
@@ -401,6 +447,216 @@
                     </button>
                 </div>
                 <textarea id="outputPrompt" readonly class="w-full h-56 p-4 rounded-2xl font-mono text-[11px] leading-relaxed border-neuro-green/20 bg-black/60"></textarea>
+
+                <div id="gemini-step-card" class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_220px] gap-4">
+                    <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-5 md:p-6">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full border border-neuro-blue/30 bg-neuro-blue/10 text-[10px] font-orbitron font-bold tracking-[0.2em] uppercase text-neuro-blue-light">
+                                Paso 2
+                            </span>
+                            <h4 class="text-lg font-orbitron font-bold text-white uppercase tracking-wide">Ahora crea la imagen en Gemini</h4>
+                        </div>
+
+                        <p class="text-sm text-gray-300 leading-relaxed mb-5">
+                            Ya quedo configurado el prompt. Copialo, pegalo en Gemini y genera la imagen con Nano Banana. Lo recomendamos porque responde muy bien a instrucciones detalladas, mantiene mejor la coherencia visual y te deja ajustar la imagen en la misma conversacion.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a data-gemini-link
+                               href="https://gemini.google.com/app?hl=es-419"
+                               target="_blank"
+                               rel="noopener"
+                               class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-neuro-green text-black font-orbitron font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_25px_rgba(154,255,95,0.35)] transition-all">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span data-gemini-label>Abrir Gemini</span>
+                            </a>
+
+                            <a href="https://www.android.com/articles/what-is-nano-banana/"
+                               target="_blank"
+                               rel="noopener"
+                               class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl border border-white/10 bg-black/40 text-white font-orbitron font-bold text-xs uppercase tracking-widest hover:border-neuro-blue/40 hover:text-neuro-blue-light transition-all">
+                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                                <span>Guia de Nano Banana</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 xl:grid-cols-1 gap-4">
+                        <div class="rounded-3xl border border-white/10 bg-black/40 px-4 py-5 flex flex-col items-center justify-center gap-3 text-center">
+                            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                                 alt="Logo oficial de Gemini"
+                                 class="w-12 h-12 object-contain">
+                            <span class="text-[11px] font-orbitron font-bold uppercase tracking-[0.18em] text-white">Gemini</span>
+                        </div>
+
+                        <div class="rounded-3xl border border-white/10 bg-black/40 px-4 py-5 flex flex-col items-center justify-center gap-3 text-center">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f34c.svg"
+                                 alt="Icono de Nano Banana"
+                                 class="w-16 h-16 object-contain">
+                            <span class="text-[11px] font-orbitron font-bold uppercase tracking-[0.18em] text-white">Nano Banana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
+            <div class="absolute -left-20 -top-20 w-64 h-64 bg-neuro-blue rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 space-y-8">
+                <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] gap-8 items-center">
+                    <div class="mx-auto w-full max-w-[260px]">
+                        <div class="rounded-[2rem] border border-white/10 bg-black/50 p-3 shadow-[0_0_35px_rgba(33,0,229,0.12)]">
+                            <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_mochila%20.png"
+                                 alt="Imagen vertical de una mochila"
+                                 class="w-full h-auto object-contain">
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neuro-green/20 bg-neuro-green/10 text-[10px] font-orbitron font-bold tracking-[0.2em] uppercase text-neuro-green">
+                            Paso 2
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-orbitron font-bold text-white tracking-wide uppercase">Sistema simple para crear imagenes que ayuden a vender</h3>
+                            <p class="text-sm md:text-base text-gray-300 leading-relaxed mt-4 max-w-2xl">
+                                En esta parte vas a aprender un sistema practico para crear una imagen publicitaria que presente tu producto, refuerce una oferta y genere deseo de compra con una estetica clara, realista y lista para comunicar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-white/10 bg-black/40 p-5 md:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-[10px] font-orbitron text-neuro-green tracking-[0.2em] uppercase font-bold">Prompt 1</p>
+                            <h4 class="text-lg font-orbitron font-bold text-white uppercase tracking-wide">Producto base</h4>
+                        </div>
+                        <button onclick="copyToClipboard('prompt-mochila-1', this)" class="btn-cyber inline-flex items-center justify-center gap-2 bg-neuro-green text-black font-orbitron font-bold text-xs py-3 px-5 rounded-xl hover:bg-white transition-all uppercase tracking-widest">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span>Copiar prompt</span>
+                        </button>
+                    </div>
+                    <div id="prompt-mochila-1" class="bg-black/80 rounded-2xl border border-white/5 p-5 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">Crea una imagen de una mochila de trekking profesional de 45 litros, color verde oliva, para montaña en San Rafael, Mendoza. Vista frontal centrada, producto completo visible. Formato vertical 4:5 (1080x1350), con espacio arriba para texto. Estilo fotografía realista, iluminación natural, fondo de montaña desenfocado, imagen clara, ordenada y atractiva. Que genere deseo de compra.</div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_220px] gap-4">
+                    <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-5 md:p-6">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full border border-neuro-blue/30 bg-neuro-blue/10 text-[10px] font-orbitron font-bold tracking-[0.2em] uppercase text-neuro-blue-light">
+                                Gemini
+                            </span>
+                            <h4 class="text-lg font-orbitron font-bold text-white uppercase tracking-wide">Pegalo y genera la imagen</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-5">
+                            Copia el prompt, abrí Gemini y generá la pieza con Nano Banana. Funciona muy bien para crear una base visual realista y después seguir ajustando la composición sin empezar de cero.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a data-gemini-link
+                               href="https://gemini.google.com/app?hl=es-419"
+                               target="_blank"
+                               rel="noopener"
+                               class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-neuro-green text-black font-orbitron font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_25px_rgba(154,255,95,0.35)] transition-all">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span data-gemini-label>Abrir Gemini</span>
+                            </a>
+                            <a href="https://www.android.com/articles/what-is-nano-banana/"
+                               target="_blank"
+                               rel="noopener"
+                               class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl border border-white/10 bg-black/40 text-white font-orbitron font-bold text-xs uppercase tracking-widest hover:border-neuro-blue/40 hover:text-neuro-blue-light transition-all">
+                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                                <span>Guia de Nano Banana</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 xl:grid-cols-1 gap-4">
+                        <div class="rounded-3xl border border-white/10 bg-black/40 px-4 py-5 flex flex-col items-center justify-center gap-3 text-center">
+                            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                                 alt="Logo oficial de Gemini"
+                                 class="w-12 h-12 object-contain">
+                            <span class="text-[11px] font-orbitron font-bold uppercase tracking-[0.18em] text-white">Gemini</span>
+                        </div>
+                        <div class="rounded-3xl border border-white/10 bg-black/40 px-4 py-5 flex flex-col items-center justify-center gap-3 text-center">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f34c.svg"
+                                 alt="Icono de Nano Banana"
+                                 class="w-16 h-16 object-contain">
+                            <span class="text-[11px] font-orbitron font-bold uppercase tracking-[0.18em] text-white">Nano Banana</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-white/10 bg-black/40 p-5 md:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-[10px] font-orbitron text-neuro-green tracking-[0.2em] uppercase font-bold">Prompt 2</p>
+                            <h4 class="text-lg font-orbitron font-bold text-white uppercase tracking-wide">Version oferta</h4>
+                        </div>
+                        <button onclick="copyToClipboard('prompt-mochila-2', this)" class="btn-cyber inline-flex items-center justify-center gap-2 bg-neuro-blue text-white font-orbitron font-bold text-xs py-3 px-5 rounded-xl hover:bg-white hover:text-neuro-blue transition-all uppercase tracking-widest">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span>Copiar prompt</span>
+                        </button>
+                    </div>
+                    <div id="prompt-mochila-2" class="bg-black/80 rounded-2xl border border-white/5 p-5 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">Usá la misma imagen como base. Mantené la mochila igual, pero podés ajustar levemente la composición para integrar un diseño publicitario. Agregá texto oferta especial 50% OFF, últimas disponibles y Av. El Libertador 910, con estilo profesional, sin tapar el producto.</div>
+                </div>
+
+                <div class="rounded-3xl border border-white/10 bg-black/40 p-5 md:p-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                        <div>
+                            <p class="text-[10px] font-orbitron text-neuro-green tracking-[0.2em] uppercase font-bold">Prompt 3</p>
+                            <h4 class="text-lg font-orbitron font-bold text-white uppercase tracking-wide">Version emocional en uso</h4>
+                        </div>
+                        <button onclick="copyToClipboard('prompt-mochila-3', this)" class="btn-cyber inline-flex items-center justify-center gap-2 bg-neuro-green text-black font-orbitron font-bold text-xs py-3 px-5 rounded-xl hover:bg-white transition-all uppercase tracking-widest">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span>Copiar prompt</span>
+                        </button>
+                    </div>
+                    <div id="prompt-mochila-3" class="bg-black/80 rounded-2xl border border-white/5 p-5 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">Crea una imagen, usá la imagen de la mochila adjunta como base. Mantené la mochila igual, sin cambiar su color ni su logo, se usa para montañismo. Ubicala en un entorno de montaña en san rafael mendoza siendo usada por una mujer joven argentina, donde se vea claramente el producto. Formato vertical 4:5 (1080x1350), con espacio arriba para texto. Estilo fotografía realista, iluminación natural cálida, fondo de montaña atractivo, imagen clara y emocional. Agregá la frase, No conquistamos la montaña, sino a nosotros mismos, con letra cursiva. Que genere conexión emocional y deseo de compra.</div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_220px] gap-4">
+                    <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-5 md:p-6">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full border border-neuro-blue/30 bg-neuro-blue/10 text-[10px] font-orbitron font-bold tracking-[0.2em] uppercase text-neuro-blue-light">
+                                Gemini
+                            </span>
+                            <h4 class="text-lg font-orbitron font-bold text-white uppercase tracking-wide">Segui con la version final</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-5">
+                            Cuando copies este ultimo prompt, volvés a Gemini, pegás la instrucción y generás la pieza final con una escena mas emocional sin perder la identidad visual del producto.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a data-gemini-link
+                               href="https://gemini.google.com/app?hl=es-419"
+                               target="_blank"
+                               rel="noopener"
+                               class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-neuro-green text-black font-orbitron font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_25px_rgba(154,255,95,0.35)] transition-all">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span data-gemini-label>Abrir Gemini</span>
+                            </a>
+                            <a href="https://www.android.com/articles/what-is-nano-banana/"
+                               target="_blank"
+                               rel="noopener"
+                               class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl border border-white/10 bg-black/40 text-white font-orbitron font-bold text-xs uppercase tracking-widest hover:border-neuro-blue/40 hover:text-neuro-blue-light transition-all">
+                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                                <span>Guia de Nano Banana</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 xl:grid-cols-1 gap-4">
+                        <div class="rounded-3xl border border-white/10 bg-black/40 px-4 py-5 flex flex-col items-center justify-center gap-3 text-center">
+                            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                                 alt="Logo oficial de Gemini"
+                                 class="w-12 h-12 object-contain">
+                            <span class="text-[11px] font-orbitron font-bold uppercase tracking-[0.18em] text-white">Gemini</span>
+                        </div>
+                        <div class="rounded-3xl border border-white/10 bg-black/40 px-4 py-5 flex flex-col items-center justify-center gap-3 text-center">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f34c.svg"
+                                 alt="Icono de Nano Banana"
+                                 class="w-16 h-16 object-contain">
+                            <span class="text-[11px] font-orbitron font-bold uppercase tracking-[0.18em] text-white">Nano Banana</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </article>
     </div>
@@ -736,7 +992,7 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
   <!-- Toast (Actualizado para funcionar de forma genérica) -->
   <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-neuro-green text-black px-8 py-3 rounded-xl shadow-[0_0_30px_rgba(154,255,95,0.4)] flex items-center gap-3 z-50 opacity-0 translate-y-10 transition-all duration-300 pointer-events-none border border-white/20">
     <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-    <span class="font-orbitron font-bold text-xs tracking-widest uppercase">COPIADO AL PORTAPAPELES</span>
+    <span id="toast-message" class="font-orbitron font-bold text-xs tracking-widest uppercase">COPIADO AL PORTAPAPELES</span>
   </div>
 
   <!-- Plantilla oculta para generación PDF A4 Formateada -->
@@ -817,6 +1073,41 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
         document.getElementById('tab-' + tabId).classList.add('active', 'text-white');
     }
 
+    function getGeminiAccessConfig() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+
+        if (/android/i.test(ua)) {
+            return {
+                href: 'https://gemini.google.com/app/download?hl=es-419',
+                label: 'Abrir Gemini en Android'
+            };
+        }
+
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            return {
+                href: 'https://apps.apple.com/us/app/google-gemini/id6477489729',
+                label: 'Abrir Gemini en iPhone o iPad'
+            };
+        }
+
+        return {
+            href: 'https://gemini.google.com/app?hl=es-419',
+            label: 'Abrir Gemini en PC'
+        };
+    }
+
+    function setupGeminiAccessLink() {
+        const config = getGeminiAccessConfig();
+        document.querySelectorAll('[data-gemini-link]').forEach(link => {
+            link.href = config.href;
+        });
+        document.querySelectorAll('[data-gemini-label]').forEach(label => {
+            label.textContent = config.label;
+        });
+    }
+
+    setupGeminiAccessLink();
+
     // Funciones del Bloque 1
     function toggleCustom(selectElement, customId) {
         const customInput = document.getElementById(customId);
@@ -840,7 +1131,8 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
 
     function compilePrompt() {
         const capture = getVal('captureType');
-        const isSmartphone = capture.toLowerCase().includes('smartphone') || capture.toLowerCase().includes('selfie');
+        const captureLower = capture.toLowerCase();
+        const isSmartphone = captureLower.includes('smartphone') || captureLower.includes('selfie') || captureLower.includes('celular');
         const cameraLogic = isSmartphone 
             ? "Smartphone camera behavior, slight lens distortion typical of mobile wide-angle lenses, subtle sensor grain, natural edge softness." 
             : "Professional optics behavior, high-resolution sensor detail, precise focus on subject features, clean RAW photo aesthetic, high dynamic range.";
@@ -880,6 +1172,12 @@ STRICT NEGATIVES: faded colors, pastel tones, beige aesthetic, flat lighting, ov
 
         navigator.clipboard.writeText(textToCopy).then(() => {
             const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            if (toastMessage) {
+                toastMessage.textContent = id === 'outputPrompt'
+                    ? 'PROMPT COPIADO. AHORA ABRI GEMINI'
+                    : 'COPIADO AL PORTAPAPELES';
+            }
             toast.classList.remove('opacity-0', 'translate-y-10');
             setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10'), 2000);
         });
