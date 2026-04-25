@@ -253,16 +253,22 @@
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <button onclick="downloadPDF(this)" 
-              class="group relative inline-flex items-center gap-3 px-8 py-3 bg-white/5 border border-white/10 text-gray-200 font-orbitron font-bold text-sm rounded-xl hover:bg-neuro-green hover:text-black hover:border-neuro-green transition-all duration-300">
-        <i data-lucide="file-down" class="w-5 h-5"></i>
-        <span>DESCARGAR GUÍA EN PDF</span>
+              class="group relative inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 text-gray-200 rounded-xl hover:bg-neuro-green hover:text-black hover:border-neuro-green transition-all duration-300">
+        <img src="https://img.icons8.com/color/96/pdf.png" width="34" height="34" alt="PDF" class="shrink-0">
+        <span class="flex flex-col items-start text-left leading-tight">
+          <span class="font-orbitron font-bold text-xs sm:text-sm uppercase">DESCARGAR CONTENIDO VIRTUAL</span>
+          <span class="text-[10px] font-semibold tracking-wide text-gray-400 group-hover:text-black/70 uppercase">Guía PDF generada desde esta página</span>
+        </span>
       </button>
       <a href="https://drive.google.com/file/d/13se4mxHslbK5yyg3niYGRBtf9qY9XOHL/view?usp=drive_link"
          target="_blank"
          rel="noopener"
-         class="group relative inline-flex items-center gap-3 px-8 py-3 bg-neuro-blue/10 border border-neuro-blue/30 text-white font-orbitron font-bold text-sm rounded-xl hover:bg-neuro-blue hover:border-neuro-blue hover:text-white transition-all duration-300">
-        <i data-lucide="folder-down" class="w-5 h-5"></i>
-        <span>DESCARGAR MATERIAL ESCRITO</span>
+         class="group relative inline-flex items-center gap-3 px-6 py-3 bg-neuro-blue/10 border border-neuro-blue/30 text-white rounded-xl hover:bg-neuro-blue hover:border-neuro-blue hover:text-white transition-all duration-300">
+        <img src="https://img.icons8.com/color/96/pdf-2.png" width="34" height="34" alt="PDF" class="shrink-0">
+        <span class="flex flex-col items-start text-left leading-tight">
+          <span class="font-orbitron font-bold text-xs sm:text-sm uppercase">DESCARGAR MATERIAL DE ESTUDIO</span>
+          <span class="text-[10px] font-semibold tracking-wide text-gray-400 group-hover:text-white/80 uppercase">Material escrito para estudiar</span>
+        </span>
       </a>
       </div>
     </div>
@@ -1664,7 +1670,12 @@ STRICT NEGATIVES: faded colors, pastel tones, beige aesthetic, flat lighting, ov
         // 4. Ejecutar librería y restaurar estado
         html2pdf().set(opt).from(element).save().then(() => {
             element.style.display = 'none';
-            btn.innerHTML = `<i data-lucide="file-down" class="w-5 h-5"></i><span>DESCARGAR GUÍA EN PDF</span>`;
+            btn.innerHTML = `
+              <img src="https://img.icons8.com/color/96/pdf.png" width="34" height="34" alt="PDF" class="shrink-0">
+              <span class="flex flex-col items-start text-left leading-tight">
+                <span class="font-orbitron font-bold text-xs sm:text-sm uppercase">DESCARGAR CONTENIDO VIRTUAL</span>
+                <span class="text-[10px] font-semibold tracking-wide text-gray-400 group-hover:text-black/70 uppercase">Guía PDF generada desde esta página</span>
+              </span>`;
             lucide.createIcons();
         });
     }
