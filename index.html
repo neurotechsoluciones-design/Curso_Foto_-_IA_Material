@@ -683,8 +683,10 @@
                         Prompt estructurado para mantener la identidad facial exacta mientras se mejora la calidad estética a nivel editorial.
                     </p>
 
-                    <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
-                        <div id="prompt-visual-1">
+                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-6 items-start">
+                        <div>
+                            <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                                <div id="prompt-visual-1">
 <div class="mb-4">
   <strong class="text-neuro-green">**R (ROL):**</strong><br>
   Actuá como fotógrafo publicitario de élite especializado en marca personal (headshots premium, estética editorial y corporativa). Tu objetivo es crear imágenes hiperrealistas y vendibles para Instagram.
@@ -693,51 +695,187 @@
 <div class="mb-4">
   <strong class="text-neuro-green">**C (CONTEXTO):**</strong><br>
   Crear una foto de marca personal premium para el perfil de Instagram usando como referencia la foto subida.
-  
-  <div class="mt-2">
-    <strong class="text-neuro-blue-light text-xs uppercase">Referencia Obligatoria:</strong><br>
-    Analizá la foto subida y usala como referencia principal para la persona (misma identidad).
-  </div>
+</div>
 
-  <div class="mt-2">
-    <strong class="text-neuro-blue-light text-xs uppercase">Restricciones Identidad:</strong>
-    <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
-      <li>- NO modificar identidad: mantener el rostro, rasgos faciales, edad aproximada y tono de piel del sujeto de la foto subida.</li>
-      <li>- NO cambiar género ni expresión base (solo mejorar naturalidad si hace falta).</li>
-      <li>- NO deformar manos, ojos ni dientes.</li>
-      <li>- NO filtros exagerados ni efecto plástico.</li>
-      <li>- Si tiene tatuajes: conservarlos tal cual. NO inventar tatuajes.</li>
-    </ul>
-  </div>
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Referencia Obligatoria:</strong><br>
+  Analizá la foto subida y usala como referencia principal para la persona (misma identidad).
+</div>
 
-  <div class="mt-2">
-    <strong class="text-neuro-blue-light text-xs uppercase">Negativos (Evitar):</strong>
-    <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
-      <li>- Evitar cara de muñeco / plástico / piel perfecta irreal.</li>
-      <li>- Evitar manos deformes o dedos extra.</li>
-      <li>- Evitar dientes raros o sonrisa forzada.</li>
-      <li>- Evitar distorsión de lente extrema.</li>
-      <li>- Evitar filtros tipo beauty agresivos.</li>
-    </ul>
-  </div>
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Restricciones Identidad:</strong>
+  <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+    <li>- NO modificar identidad: mantener rostro, edad y tono de piel de la foto.</li>
+    <li>- NO cambiar género ni expresión base.</li>
+    <li>- NO deformar manos, ojos ni dientes.</li>
+    <li>- NO filtros exagerados ni efecto plástico.</li>
+  </ul>
 </div>
 
 <div>
   <strong class="text-neuro-green">**I (INSTRUCCIONES):**</strong><br>
-  dame un promt en estilo json para nano banana en cuadro de código. <br>
-  `Entregar en un bloque de código json`
+  Crea la imagen de marca personal basada en las reglas.
 </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex justify-end">
+                                <button onclick="copyToClipboard('prompt-visual-1', this)" 
+                                        class="btn-cyber flex items-center justify-center gap-3 bg-neuro-green text-black font-orbitron font-bold text-xs md:text-sm py-3.5 px-8 rounded-xl hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(154,255,95,0.3)] hover:shadow-[0_0_30px_rgba(154,255,95,0.6)] w-full sm:w-auto">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                    <span>COPIAR PROMPT</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mx-auto w-full max-w-[280px] lg:max-w-none">
+                            <div class="rounded-[2rem] border border-white/10 bg-black/40 p-3 shadow-[0_0_30px_rgba(33,0,229,0.12)]">
+                                <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_romi_marca_personal.jpg"
+                                     alt="Referencia de marca personal"
+                                     class="w-full aspect-[4/6] object-cover rounded-[1.35rem]">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="mt-6 flex justify-end">
-                        <button onclick="copyToClipboard('prompt-visual-1', this)" 
-                                class="btn-cyber flex items-center justify-center gap-3 bg-neuro-green text-black font-orbitron font-bold text-xs md:text-sm py-3.5 px-8 rounded-xl hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(154,255,95,0.3)] hover:shadow-[0_0_30px_rgba(154,255,95,0.6)] w-full sm:w-auto">
-                            <i data-lucide="copy" class="w-4 h-4"></i>
-                            <span>COPIAR PROMPT</span>
-                        </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-1 relative group mt-8">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-neuro-blue-light via-neuro-green to-neuro-dark opacity-15 group-hover:opacity-40 rounded-3xl blur transition duration-500"></div>
+
+            <div class="relative bg-neuro-dark/95 h-full rounded-[20px] p-6 md:p-8 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-neuro-green/10 p-3 rounded-xl border border-neuro-green/30 shadow-[0_0_15px_rgba(154,255,95,0.15)]">
+                                <i data-lucide="user-round-search" class="text-neuro-green w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-orbitron font-bold text-white tracking-wide">Fidelidad de Estilo Personal</h3>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-neuro-green animate-pulse"></span>
+                                    <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Identidad + Vestuario + Encuadre Original</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    <p class="text-sm text-gray-300 mb-6 font-light border-l-2 border-neuro-green/40 pl-4">
+                        Mejora la calidad visual de una marca personal premium sin perder la ropa, el estilo real, el encuadre ni la presencia auténtica de la persona original.
+                    </p>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-6 items-start">
+                        <div>
+                            <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                                <div id="prompt-visual-1b">
+<div class="mb-4">
+  <strong class="text-neuro-green">**R (ROL):**</strong><br>
+  Actuá como fotógrafo publicitario de élite especializado en marca personal (headshots premium, estética editorial y corporativa). Tu objetivo es crear imágenes hiperrealistas y vendibles para Instagram.
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-green">**C (CONTEXTO):**</strong><br>
+  Crear una foto de marca personal premium para el perfil de Instagram usando como referencia la foto subida.
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Referencia Obligatoria:</strong><br>
+  Analizá la foto subida y usala como referencia principal y absoluta para la persona (misma identidad). La imagen subida define la identidad real, el encuadre, la postura, el estilo visual y la presencia general de la persona. No inventes una persona nueva ni reemplaces rasgos por estereotipos visuales genéricos.
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Restricciones Identidad:</strong>
+  <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+    <li>- NO modificar identidad: mantener rostro, facciones, edad y tono de piel de la foto.</li>
+    <li>- NO cambiar género ni expresión base.</li>
+    <li>- NO alterar estructura facial, proporciones, nariz, ojos, boca ni mandíbula.</li>
+    <li>- NO reinterpretar el rostro con “versión corporativa genérica”.</li>
+    <li>- NO reemplazar rasgos por estética estándar de stock (ej: mujer de saco azul, hombre de traje genérico).</li>
+    <li>- Mantener identidad exacta y reconocible a simple vista como la misma persona de la foto original.</li>
+    <li>- Prioridad absoluta: preservar identidad real antes que “mejorar” estética.</li>
+    <li>- Si hay conflicto entre estética premium y parecido real, priorizar siempre parecido real.</li>
+    <li>- NO deformar manos, ojos ni dientes.</li>
+    <li>- NO filtros exagerados ni efecto plástico.</li>
+    <li>- NO suavizar en exceso la piel.</li>
+    <li>- NO cambiar peinado, color de cabello ni volumen natural salvo mejora mínima realista.</li>
+    <li>- Mantener expresión auténtica y energía natural de la persona.</li>
+  </ul>
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Restricciones de Estilo y Vestuario:</strong>
+  <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+    <li>- Mantener el estilo personal original de la foto como base obligatoria.</li>
+    <li>- NO reemplazar vestuario por ropa corporativa genérica.</li>
+    <li>- Conservar la lógica estética de la prenda original, elevándola a una versión más prolija, limpia y premium.</li>
+    <li>- Mejorar presencia visual sin romper el estilo real de la persona.</li>
+    <li>- No agregar saco azul, blazer corporativo genérico, camisa de oficina ni traje estándar salvo que ya existan en la imagen original.</li>
+    <li>- La ropa debe sentirse como una versión premium del estilo real de la persona, no como vestuario inventado.</li>
+  </ul>
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Restricciones de Composición:</strong>
+  <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+    <li>- Respetar el tipo de encuadre de la foto subida como referencia principal.</li>
+    <li>- Si la imagen original es headshot, conservar headshot.</li>
+    <li>- Si la imagen original es medio cuerpo, conservar medio cuerpo.</li>
+    <li>- No inventar encuadres nuevos.</li>
+    <li>- No cambiar postura base salvo microajustes naturales y realistas.</li>
+    <li>- Mantener lenguaje corporal coherente con la foto original.</li>
+    <li>- No convertir la imagen en retrato corporativo rígido si la referencia no lo es.</li>
+  </ul>
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Estética Visual:</strong>
+  <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+    <li>- Estilo premium, editorial, limpio y moderno.</li>
+    <li>- Iluminación premium natural.</li>
+    <li>- Fondo limpio, elegante y visualmente vendible.</li>
+    <li>- Acabado hiperrealista.</li>
+    <li>- Look premium para marca personal.</li>
+    <li>- Calidad visual alta para Instagram.</li>
+    <li>- Imagen natural, auténtica y creíble.</li>
+    <li>- Debe parecer una versión profesional de la misma persona, no otra persona distinta.</li>
+  </ul>
+</div>
+
+<div class="mb-4">
+  <strong class="text-neuro-blue-light text-xs uppercase">Jerarquía de Decisión (Obligatoria):</strong>
+  <ul class="pl-2 border-l border-gray-700 mt-1 space-y-1 text-xs text-gray-400">
+    <li>- 1. Preservar identidad exacta</li>
+    <li>- 2. Preservar estilo real de la persona</li>
+    <li>- 3. Respetar encuadre y composición original</li>
+    <li>- 4. Recién después elevar estética a nivel premium</li>
+  </ul>
+</div>
+
+<div>
+  <strong class="text-neuro-green">**I (INSTRUCCIONES):**</strong><br>
+  Crea la imagen de marca personal basada en las reglas.
+</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex justify-end">
+                                <button onclick="copyToClipboard('prompt-visual-1b', this)" 
+                                        class="btn-cyber flex items-center justify-center gap-3 bg-neuro-green text-black font-orbitron font-bold text-xs md:text-sm py-3.5 px-8 rounded-xl hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(154,255,95,0.3)] hover:shadow-[0_0_30px_rgba(154,255,95,0.6)] w-full sm:w-auto">
+                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                    <span>COPIAR PROMPT</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mx-auto w-full max-w-[280px] lg:max-w-none">
+                            <div class="rounded-[2rem] border border-white/10 bg-black/40 p-3 shadow-[0_0_30px_rgba(154,255,95,0.12)]">
+                                <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imegen_personal_fiel_ropa.png"
+                                     alt="Referencia de estilo personal fiel a la ropa"
+                                     class="w-full aspect-[4/6] object-cover rounded-[1.35rem]">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </article>
@@ -891,11 +1029,263 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
     <div id="content-bloque3" class="hidden animate-fade-in-up space-y-12">
         <!-- ENCABEZADO -->
         <div class="text-center py-8">
-            <h2 class="text-3xl font-orbitron font-bold text-white mb-4">ANIMACIÓN <span class="text-neuro-green">GROK</span></h2>
+            <h2 class="text-3xl font-orbitron font-bold text-white mb-4">DE IMAGEN A <span class="text-neuro-green">EXPERIENCIA</span></h2>
             <p class="text-gray-300 text-sm max-w-xl mx-auto mb-6">
-                Transforma tus imágenes generadas en clips de video de alta calidad.
+                Convertí imágenes en videos, experiencias interactivas y contenido que impacta.
             </p>
         </div>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-56 h-56 bg-neuro-blue rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 space-y-6">
+                <div>
+                    <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-3">Prompt catálogo</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">Una buena base asegura asegura productos que impactan</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_pelota1.png"
+                             alt="Imagen pelota 1"
+                             class="w-full aspect-square object-cover rounded-2xl">
+                    </div>
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_pelota2.png"
+                             alt="Imagen pelota 2"
+                             class="w-full aspect-square object-cover rounded-2xl">
+                    </div>
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3 sm:col-span-2 lg:col-span-1 max-w-full">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_pelota3.png"
+                             alt="Imagen pelota 3"
+                             class="w-full aspect-square object-cover rounded-2xl">
+                    </div>
+                </div>
+
+                <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                    <div id="prompt-bloque3-catalogo">
+<strong class="text-neuro-green">Rol:</strong><br>
+Actuá como un editor profesional de imágenes de producto especializado en fotografía de catálogo e-commerce.<br><br>
+
+<strong class="text-neuro-green">Contexto:</strong><br>
+Voy a proporcionarte una imagen de un producto. Esta imagen puede tener mala iluminación, fondo desordenado o baja calidad. El objetivo es mejorarla para uso comercial (ej: Mercado Libre, tiendas online, publicidad), sin alterar el producto original.<br><br>
+
+<strong class="text-neuro-green">Instrucciones:</strong><br>
+1. Analizá la imagen proporcionada.<br>
+2. Mantené el producto EXACTAMENTE igual:<br>
+   - No modificar forma, proporciones ni diseño<br>
+   - No alterar colores reales<br>
+   - No eliminar ni cambiar logos, textos o marcas<br>
+   - No estilizar ni reinterpretar el producto<br>
+3. Mejorá únicamente:<br>
+   - Nitidez y definición (alta calidad)<br>
+   - Iluminación (uniforme y profesional)<br>
+   - Limpieza visual (eliminar ruido o imperfecciones del entorno)<br>
+4. Eliminá completamente el fondo original.<br>
+5. Generá un fondo de catálogo profesional:<br>
+   - Base blanca (#FFFFFF)<br>
+   - Puede incluir un leve degradé a gris muy claro<br>
+   - Agregar sombra suave y realista debajo del producto<br>
+   - Mantener estética minimalista y comercial<br>
+6. Asegurá que el producto esté:<br>
+   - Centrado<br>
+   - Bien recortado<br>
+   - Con proporciones intactas<br>
+7. Generá como salida un pack de imágenes:<br>
+   - 1:1 (cuadrado, alta resolución)<br>
+   - 4:5 (vertical tipo e-commerce)<br>
+   - 16:9 (horizontal para banners/web)<br>
+8. Todas las versiones deben mantener consistencia visual y calidad profesional.<br>
+9. El resultado final debe parecer una fotografía de catálogo real, lista para publicación.<br><br>
+
+<strong class="text-neuro-green">Resultado esperado:</strong><br>
+Imágenes de producto optimizadas, realistas, sin alterar el producto original, con fondo limpio de catálogo y calidad profesional.
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <button onclick="copyToClipboard('prompt-bloque3-catalogo', this)" 
+                            class="btn-cyber flex items-center justify-center gap-2 bg-neuro-green text-black font-orbitron font-bold text-xs md:text-sm py-3.5 px-7 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(154,255,95,0.25)] w-full sm:w-auto">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>COPIAR PROMPT</span>
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute -left-16 -bottom-16 w-56 h-56 bg-neuro-green rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 space-y-6">
+                <div>
+                    <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-3">Publicidad Premium</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">Construí una pieza promocional de alto impacto para redes sociales, con foco en el producto, jerarquía visual clara y una estética deportiva pensada para captar atención y vender.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_pelota1.png"
+                             alt="Pelota mundial 2026"
+                             class="w-full aspect-square object-cover rounded-2xl">
+                    </div>
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_joven.png"
+                             alt="Imagen joven con producto"
+                             class="w-full aspect-square object-cover rounded-2xl">
+                    </div>
+                </div>
+
+                <div class="bg-black/80 rounded-xl border border-white/5 p-6 font-mono text-sm text-gray-300 leading-relaxed shadow-inner">
+                    <div id="prompt-bloque3-promo">
+Eres un diseñador gráfico profesional especializado en publicidad para redes sociales.<br><br>
+Se necesita crear una imagen promocional para Instagram (formato 4:5) de una tienda llamada "NeuroTech Soluciones" que vende remeras oversize para hombres y mujeres adolescentes.<br><br>
+<strong class="text-neuro-green">Instrucciones:</strong><br>
+- Diseñar una imagen en formato vertical 4:5 optimizada para carrusel de Instagram.<br>
+- Estilo visual: deportivo, energético, inspirado en publicidad de fútbol (dinámico, llamativo, con sensación de movimiento y emoción).<br>
+- Usar la foto del producto proporcionada como elemento principal:<br>
+- El producto debe estar centrado y ser el protagonista.<br>
+- No modificar, alterar ni reemplazar la imagen del producto.<br>
+- Incluir una pelota oficial del mundial 2026:<br>
+- No modificar su diseño.<br>
+- Integrarla de forma dinámica en la composición (ej: efecto movimiento, fondo, energía).<br>
+- Texto principal destacado (máxima jerarquía):<br>
+"VIVÍ ESTA PROMO MUNDIAL 50%"<br>
+- Incluir texto secundario:<br>
+"Remeras Oversize para hombres y mujeres"<br>
+- Agregar el nombre del negocio:<br>
+"NeuroTech Soluciones"<br>
+- Incluir datos de contacto:<br>
+- Dirección del local (Av. El Libertadpr 910)<br>
+- Teléfono (dejar espacio editable)<br>
+- Instagram (dejar espacio editable)<br>
+- Usar tipografías modernas, deportivas y de alto impacto.<br>
+- Aplicar colores vibrantes asociados al fútbol (ej: verdes, blancos, negros, acentos brillantes).<br>
+- Incluir efectos visuales como luces, destellos, energía o trazos dinámicos para reforzar el estilo futbolero.<br>
+- Mantener buena legibilidad en todos los textos.<br>
+- Composición equilibrada, con foco claro en el producto y el mensaje promocional.<br><br>
+<strong class="text-neuro-green">Resultado esperado:</strong><br>
+Una imagen publicitaria profesional, atractiva y lista para redes sociales que comunique claramente la promoción y destaque el producto.
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <button onclick="copyToClipboard('prompt-bloque3-promo', this)" 
+                            class="btn-cyber flex items-center justify-center gap-2 bg-neuro-green text-black font-orbitron font-bold text-xs md:text-sm py-3.5 px-7 rounded-xl hover:bg-white transition-all shadow-[0_0_20px_rgba(154,255,95,0.25)] w-full sm:w-auto">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>COPIAR PROMPT</span>
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute -right-16 -bottom-16 w-56 h-56 bg-neuro-blue-light rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 space-y-6">
+                <div>
+                    <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-3">SISTEMA PARA CREAR IMÁGENES Y VIDEOS QUE IMPACTAN</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">Aprendés a estructurar contenido visual con lógica publicitaria: qué mostrar, cómo encuadrarlo y cómo convertir una imagen en una pieza que funcione en redes, catálogos o promoción.</p>
+                    <p class="text-sm text-gray-300 leading-relaxed">No se trata solo de generar imágenes, sino de construir contenido que detiene el scroll, transmite valor y aumenta la percepción del producto.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-6 items-start">
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-5 md:p-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neuro-blue/30 bg-neuro-blue/10 text-[10px] font-orbitron font-bold tracking-[0.2em] uppercase text-neuro-blue-light mb-4">
+                            Gem de Gemini
+                        </div>
+                        <h4 class="text-lg font-orbitron font-bold text-white tracking-wide mb-3">CREADOR DE OBJETOS PARLANTE: PROMOCIÓN DE PRODUCTOS Y SERVICIOS</h4>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-5">
+                            Es un gem de Gemini creado por NeuroTech para generar objetos animados que hablan y presentar productos o servicios de una forma más llamativa, clara y memorable para redes, promociones y contenido comercial.
+                        </p>
+                        <a href="https://gemini.google.com/gem/1XMYPjxg51fW8ElxKJ3h3ouur2PlaxiVN?usp=sharing"
+                           target="_self"
+                           onclick="window.location.href='https://gemini.google.com/gem/1XMYPjxg51fW8ElxKJ3h3ouur2PlaxiVN?usp=sharing'; return false;"
+                           class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-neuro-green text-black font-orbitron font-bold text-xs uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(154,255,95,0.25)]">
+                            <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+                                 alt="Logo Gemini"
+                                 class="w-5 h-5 object-contain">
+                            <span>ABRIR GEM DIRECTO</span>
+                        </a>
+                    </div>
+
+                    <div class="mx-auto w-full max-w-[280px] lg:max-w-none">
+                        <div class="rounded-[2rem] border border-white/10 bg-black/40 p-3 shadow-[0_0_30px_rgba(33,0,229,0.12)]">
+                            <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_gem_parlante.png"
+                                 alt="Gem creador de objetos parlantes"
+                                 class="w-full aspect-[4/6] object-cover rounded-[1.35rem]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute -left-16 -top-16 w-56 h-56 bg-neuro-green rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_260px] gap-6 items-center">
+                <div>
+                    <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-4">CREADOR DE VIDEOS PUBLICITARIOS CON IA</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">Creá videos que impacten a partir de una imagen: definí qué mostrar, cómo generar ritmo y cómo captar atención en segundos.</p>
+                    <p class="text-sm text-gray-300 leading-relaxed">No es solo animar, es transformar una idea en contenido que conecta, se recuerda y funciona en redes.</p>
+                </div>
+
+                <div class="mx-auto w-full max-w-[260px] lg:max-w-none">
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3 shadow-[0_0_30px_rgba(154,255,95,0.12)]">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_gem_director.png"
+                             alt="Gem creador de videos publicitarios"
+                             class="w-full aspect-square object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-56 h-56 bg-neuro-blue rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 space-y-6">
+                <div>
+                    <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-4">EL SIGUIENTE NIVEL DEL CONTENIDO VISUAL</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">Llevá tus ideas a un nivel visual más alto: creá escenas más elaboradas, con mayor detalle, atmósfera y narrativa.</p>
+                    <p class="text-sm text-gray-300 leading-relaxed">No es solo generar videos, es construir contenido que se destaca, transmite mejor el mensaje y posiciona tu comunicación por encima del resto.</p>
+                </div>
+
+                <div class="rounded-3xl border border-white/10 bg-black/40 p-3 shadow-[0_0_30px_rgba(33,0,229,0.12)]">
+                    <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_flow.png"
+                         alt="Presentación de Flow Labs"
+                         class="w-full aspect-[16/9] object-cover rounded-2xl">
+                </div>
+
+                <div class="flex justify-start">
+                    <a href="https://labs.google/flow/about"
+                       target="_blank"
+                       rel="noopener"
+                       class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-neuro-blue text-white font-orbitron font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-neuro-blue transition-all shadow-[0_0_20px_rgba(33,0,229,0.22)]">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span>ABRIR FLOW LABS</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article class="glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute -left-16 -bottom-16 w-56 h-56 bg-neuro-green rounded-full filter blur-[110px] opacity-10"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-6 items-center">
+                <div>
+                    <h3 class="text-2xl font-orbitron font-bold text-white tracking-wide mb-4">CREÁ LA IDENTIDAD SONORA DE TU MARCA</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-3">Sumá sonido a tu contenido y completá la experiencia de tu marca: creá piezas musicales alineadas a tu estilo, mensaje y personalidad.</p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-5">No es solo audio, es construir una identidad que se reconoce, refuerza lo visual y potencia el impacto de tu contenido en redes y plataformas digitales.</p>
+
+                    <a href="https://suno.com/home"
+                       target="_blank"
+                       rel="noopener"
+                       class="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-neuro-green text-black font-orbitron font-bold text-xs uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(154,255,95,0.25)]">
+                        <i data-lucide="music-4" class="w-4 h-4"></i>
+                        <span>ABRIR SUNO</span>
+                    </a>
+                </div>
+
+                <div class="mx-auto w-full max-w-[320px] lg:max-w-none">
+                    <div class="rounded-3xl border border-white/10 bg-black/40 p-3 shadow-[0_0_30px_rgba(154,255,95,0.12)]">
+                        <img src="https://raw.githubusercontent.com/neurotechsoluciones-design/neurotech-assets/main/imagen_suno.png"
+                             alt="Presentación de Suno"
+                             class="w-full h-auto object-contain rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </article>
 
         <article class="glass-panel rounded-3xl p-1 relative group">
             <div class="absolute -inset-0.5 bg-gradient-to-r from-neuro-green to-white opacity-10 group-hover:opacity-30 rounded-3xl blur transition duration-500"></div>
@@ -983,6 +1373,23 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
     <span id="toast-message" class="font-orbitron font-bold text-xs tracking-widest uppercase">COPIADO AL PORTAPAPELES</span>
   </div>
 
+  <div class="fixed right-4 bottom-6 z-40 w-[calc(100%-2rem)] max-w-sm">
+    <div class="glass-panel rounded-2xl px-3 py-3 bg-black/75 border border-white/10 shadow-[0_0_25px_rgba(0,0,0,0.35)]">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="text-[10px] font-orbitron font-bold tracking-[0.18em] uppercase text-gray-400">Navegación Rápida</span>
+        <button onclick="navigateToAdjacentBlock(1)" id="quick-next-btn" class="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-neuro-green text-black font-orbitron text-[10px] font-bold uppercase tracking-[0.16em] hover:bg-white transition-all">
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          <span id="quick-next-label">Ir a Bloque 2</span>
+        </button>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <button onclick="switchTabAndFocus('bloque1')" id="quick-tab-bloque1" class="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-[10px] font-orbitron font-bold uppercase tracking-[0.16em] text-gray-300 hover:text-white transition-all">Bloque 1</button>
+        <button onclick="switchTabAndFocus('bloque2')" id="quick-tab-bloque2" class="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-[10px] font-orbitron font-bold uppercase tracking-[0.16em] text-gray-300 hover:text-white transition-all">Bloque 2</button>
+        <button onclick="switchTabAndFocus('bloque3')" id="quick-tab-bloque3" class="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-[10px] font-orbitron font-bold uppercase tracking-[0.16em] text-gray-300 hover:text-white transition-all">Bloque 3</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Plantilla oculta para generación PDF A4 Formateada -->
   <div id="pdf-template" style="display: none; background: white; color: black; padding: 15mm; font-family: 'Inter', sans-serif; width: 190mm;">
      <!-- Header A4 -->
@@ -1051,6 +1458,8 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
 
   <script>
     lucide.createIcons();
+    const blockOrder = ['bloque1', 'bloque2', 'bloque3'];
+    let currentTabId = 'bloque1';
 
     function switchTab(tabId) {
         ['bloque1', 'bloque2', 'bloque3'].forEach(id => {
@@ -1059,6 +1468,54 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
         });
         document.getElementById('content-' + tabId).classList.remove('hidden');
         document.getElementById('tab-' + tabId).classList.add('active', 'text-white');
+        currentTabId = tabId;
+        updateQuickNavigation();
+    }
+
+    function switchTabAndFocus(tabId) {
+        switchTab(tabId);
+        const section = document.getElementById('content-' + tabId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function navigateToAdjacentBlock(direction) {
+        const currentIndex = blockOrder.indexOf(currentTabId);
+        const nextIndex = currentIndex + direction;
+        if (nextIndex < 0 || nextIndex >= blockOrder.length) return;
+        switchTabAndFocus(blockOrder[nextIndex]);
+    }
+
+    function updateQuickNavigation() {
+        blockOrder.forEach(id => {
+            const btn = document.getElementById('quick-tab-' + id);
+            if (!btn) return;
+            if (id === currentTabId) {
+                btn.classList.add('bg-neuro-green', 'text-black', 'border-neuro-green');
+                btn.classList.remove('bg-white/[0.03]', 'text-gray-300', 'border-white/10');
+            } else {
+                btn.classList.remove('bg-neuro-green', 'text-black', 'border-neuro-green');
+                btn.classList.add('bg-white/[0.03]', 'text-gray-300', 'border-white/10');
+            }
+        });
+
+        const nextBtn = document.getElementById('quick-next-btn');
+        const nextLabel = document.getElementById('quick-next-label');
+        const currentIndex = blockOrder.indexOf(currentTabId);
+        const nextIndex = currentIndex + 1;
+
+        if (!nextBtn || !nextLabel) return;
+
+        if (nextIndex < blockOrder.length) {
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+            nextLabel.textContent = `Ir a ${blockOrder[nextIndex].replace('bloque', 'Bloque ')}`;
+        } else {
+            nextBtn.disabled = true;
+            nextBtn.classList.add('opacity-40', 'cursor-not-allowed');
+            nextLabel.textContent = 'Último bloque';
+        }
     }
 
     function getGeminiAccessConfig() {
@@ -1095,6 +1552,7 @@ Con la información que tienes de mi , ejecuta el día número uno. voy a suvbir
     }
 
     setupGeminiAccessLink();
+    updateQuickNavigation();
 
     // Funciones del Bloque 1
     function toggleCustom(selectElement, customId) {
